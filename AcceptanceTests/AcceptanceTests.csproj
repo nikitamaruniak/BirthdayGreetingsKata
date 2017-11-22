@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BirthdayGreetingsFixture.cs" />
-    <Compile Include="GivenOneAndOnlyBirthday.cs" />
+    <Compile Include="GivenOneAndOnlyWithBirthdayToday.cs" />
+    <Compile Include="GivenOneAndOnlyWithBirthdayNotToday.cs" />
+    <Compile Include="MthBirthdayGreetingsFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

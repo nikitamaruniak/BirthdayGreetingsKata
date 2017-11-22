@@ -4,9 +4,9 @@ using Xunit;
 
 namespace AcceptanceTests
 {
-    public class GivenOneAndOnlyBirthday : IClassFixture<GivenOneAndOnlyBirthday.Fixture>
+    public class GivenOneAndOnlyWithBirthdayToday : IClassFixture<GivenOneAndOnlyWithBirthdayToday.Fixture>
     {
-        public class Fixture : BirthdayGreetingsFixture
+        public class Fixture : MthBirthdayGreetingsFixture
         {
             public Fixture() : base(employeeLine)
             {   
@@ -18,7 +18,7 @@ namespace AcceptanceTests
                 "Doe", "John", DateTime.Now,
                 "john.doe@foobar.com");
 
-        public GivenOneAndOnlyBirthday(Fixture fixture)
+        public GivenOneAndOnlyWithBirthdayToday(Fixture fixture)
         {
             this.fixture = fixture;
         }
@@ -30,7 +30,7 @@ namespace AcceptanceTests
             Assert.Equal(0, fixture.ExitCode);
 
         [Fact]
-        public void OneEmailReceived() =>
+        public void SendsOneEmail() =>
             Assert.Equal(1, fixture.ReceivedEmails.Count);
 
         [Fact]
