@@ -21,10 +21,8 @@ namespace BirthdayGreetings
                 {
                     using (SmtpClient smtpClient = new SmtpClient(hostname, port))
                     {
-                        var subject = "Happy birthday!";
-                        var body = string.Format("Happy birthday, dear {0}!", employee.FirstName);
-                        var message = new MailMessage("noreply@noname", employee.Email, subject, body);
-                        smtpClient.Send(message);
+                        var msg = new GreetingMessage(employee);
+                        smtpClient.Send(new MailMessage("noreply@noname.com", msg.To, msg.Subject, msg.Body));
                     }
                 }
             }

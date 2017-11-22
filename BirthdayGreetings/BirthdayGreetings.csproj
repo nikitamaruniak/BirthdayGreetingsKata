@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeesFile.cs" />
+    <Compile Include="GreetingMessage.cs" />
     <Compile Include="IEmployees.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
