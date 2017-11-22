@@ -1,17 +1,16 @@
-﻿using nDumbster.Smtp;
 using System;
-using System.Linq;
-using System.IO;
-using Xunit;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Net.Mail;
+using nDumbster.Smtp;
 
 namespace AcceptanceTests
 {
-    public class BirthdayGreetingsTests
+    public class BirthdayGreetingsFixture
     {
-        [Fact]
-        public void GivenBirthdayTodaySendsEmail()
+        public BirthdayGreetingsFixture(string inputLine)
         {
             using (SimpleSmtpServer smtp = SimpleSmtpServer.Start(8025))
             {
@@ -19,11 +18,7 @@ namespace AcceptanceTests
                 using (StreamWriter writer = new StreamWriter(file))
                 {
                     writer.WriteLine("last_name, first_name, date_of_birth, email");
-                    writer.WriteLine(
-                        "{0}, {1}, {2}, {3}",
-                        "Doe", "John",
-                        DateTime.Now.ToString(@"yyyy\/MM\/dd"),
-                        "john.doe@foobar.com");
+                    writer.WriteLine(inputLine);
                 }
 
                 Process service = new Process();
@@ -45,14 +40,12 @@ namespace AcceptanceTests
                     File.Delete("employees.txt");
                 }
 
-                Assert.Equal(0, service.ExitCode);
-                Assert.Equal(1, smtp.ReceivedEmailCount);
-                MailMessage message = smtp.ReceivedEmail.First();
-                Assert.Single(message.To);
-                Assert.Equal("john.doe@foobar.com", message.To.First().Address);
-                Assert.Equal("Happy birthday!", message.Subject);
-                Assert.Equal("Happy birthday, dear John!", message.Body);
+                ExitCode = service.ExitCode;
+                ReceivedEmails = smtp.ReceivedEmail.ToArray();
             }
         }
+
+        public int ExitCode { get; }
+        public IReadOnlyCollection<MailMessage> ReceivedEmails { get; }
     }
 }
