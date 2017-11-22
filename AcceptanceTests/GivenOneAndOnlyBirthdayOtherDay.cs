@@ -3,7 +3,7 @@ using Xunit;
 
 namespace AcceptanceTests
 {
-    public class GivenOneAndOnlyWithBirthdayNotToday : IClassFixture<GivenOneAndOnlyWithBirthdayNotToday.Fixture>
+    public class GivenOneAndOnlyBirthdayOtherDay : IClassFixture<GivenOneAndOnlyBirthdayOtherDay.Fixture>
     {
         public class Fixture : MthBirthdayGreetingsFixture
         {
@@ -17,7 +17,7 @@ namespace AcceptanceTests
                 "Doe", "John", DateTime.Now.AddDays(1),
                 "john.doe@foobar.com");
 
-        public GivenOneAndOnlyWithBirthdayNotToday(Fixture fixture)
+        public GivenOneAndOnlyBirthdayOtherDay(Fixture fixture)
         {
             this.fixture = fixture;
         }
