@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BirthdayCalendar.cs" />
     <Compile Include="BirthdayGreetingsService.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="EmailClient.cs" />
