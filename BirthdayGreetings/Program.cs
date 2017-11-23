@@ -6,13 +6,11 @@ namespace BirthdayGreetings
     {
         static void Main(string[] args)
         {
-            string hostname = args[0];
-            int port = int.Parse(args[1]);
-            string dataPath = args[2];
+            var config = new Configuration(args);
 
-            IEmployees employees = new EmployeesFile(dataPath);
+            IEmployees employees = new EmployeesFile(config.EmployeesFilePath);
 
-            using (var emailClient = new EmailClient(hostname, port))
+            using (var emailClient = new EmailClient(config.SmtpHostname, config.SmtpPort))
                 new BirthdayGreetingsService(DateTime.Today, employees, emailClient)
                     .SendGreetings();
         }

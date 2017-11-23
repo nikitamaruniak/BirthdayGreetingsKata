@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BirthdayGreetingsService.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="EmailClient.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeesFile.cs" />
