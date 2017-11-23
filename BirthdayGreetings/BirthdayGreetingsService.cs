@@ -7,7 +7,7 @@ namespace BirthdayGreetings
     {
         public BirthdayGreetingsService(
             DateTime today,
-            IEmployees employees,
+            IEnumerable<Employee> employees,
             ISendGreetingMessage deliveryService)
         {
             this.today = today;
@@ -16,7 +16,7 @@ namespace BirthdayGreetings
         }
 
         private readonly DateTime today;
-        private readonly IEmployees employees;
+        private readonly IEnumerable<Employee> employees;
         private readonly ISendGreetingMessage deliveryService;
 
         public void SendGreetings()

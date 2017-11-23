@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BirthdayGreetings
 {
-    public class EmployeesFile : IEmployees
+    public class EmployeesFile : IEnumerable<Employee>
     {
         public EmployeesFile(string path)
         {

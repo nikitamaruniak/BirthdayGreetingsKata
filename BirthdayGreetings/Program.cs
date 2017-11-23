@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BirthdayGreetings
 {
@@ -8,7 +9,8 @@ namespace BirthdayGreetings
         {
             var config = new Configuration(args);
 
-            IEmployees employees = new EmployeesFile(config.EmployeesFilePath);
+            IEnumerable<Employee> employees =
+                new EmployeesFile(config.EmployeesFilePath);
 
             using (var emailClient = new EmailClient(config.SmtpHostname, config.SmtpPort))
                 new BirthdayGreetingsService(DateTime.Today, employees, emailClient)
